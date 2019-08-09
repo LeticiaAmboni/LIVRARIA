@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/_LayoutLogin.cshtml";
+}
+
+<div class="container">
+
+    <div id="login">
+
+        <form action="Verifica" method="post">
+
+            <fieldset class="clearfix">
+
+                <p>
+                    <span class="fontawesome-user"></span>
+                    <input type="text" value="Username" onBlur="if(this.value == '') this.value = 'Username'" onFocus="if(this.value == 'Username') this.value = ''" required>
+                </p> <!-- JS because of IE support; better: placeholder="Username" -->
+                <p>
+                    <span class="fontawesome-lock"></span>
+                    <input type="password" value="Password" onBlur="if(this.value == '') this.value = 'Password'" onFocus="if(this.value == 'Password') this.value = ''" required>
+                </p> <!-- JS because of IE support; better: placeholder="Password" -->
+                <p><input type="submit" value="Entrar"></p>
+
+            </fieldset>
+
+        </form>
+
+    </div> <!-- end login -->
+
+</div>

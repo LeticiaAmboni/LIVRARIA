@@ -1,0 +1,238 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BDLIVRARIAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CATEGORIAS">
+    <Key>
+      <PropertyRef Name="IDCATEGORIA" />
+    </Key>
+    <Property Name="IDCATEGORIA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NOME" Type="varchar" MaxLength="150" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DISTRIBUIDORAS">
+    <Key>
+      <PropertyRef Name="IDDISTRIBUIDORA" />
+    </Key>
+    <Property Name="IDDISTRIBUIDORA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CNPJ" Type="varchar" MaxLength="18" Nullable="false" />
+    <Property Name="NOMEFANTASIA" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="EMAIL" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="TELEFONE" Type="varchar" MaxLength="14" />
+    <Property Name="CIDADE" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="ESTADO" Type="varchar" MaxLength="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EDITORAS">
+    <Key>
+      <PropertyRef Name="IDEDITORA" />
+    </Key>
+    <Property Name="IDEDITORA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CNPJ" Type="varchar" MaxLength="18" Nullable="false" />
+    <Property Name="NOMEFANTASIA" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="EMAIL" Type="varchar" MaxLength="100" />
+    <Property Name="TELEFONE" Type="varchar" MaxLength="14" />
+  </EntityType>
+  <EntityType Name="FUNCIONARIOS">
+    <Key>
+      <PropertyRef Name="IDFUNCIONARIOS" />
+    </Key>
+    <Property Name="IDFUNCIONARIOS" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NOME" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="CELULAR" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="EMAIL" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="SENHA" Type="varchar(max)" Nullable="false" />
+    <Property Name="USERNAME" Type="varchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LIVROCATEGORIA">
+    <Key>
+      <PropertyRef Name="IDLIVRO" />
+      <PropertyRef Name="IDCATEGORIA" />
+    </Key>
+    <Property Name="IDLIVRO" Type="int" Nullable="false" />
+    <Property Name="IDCATEGORIA" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LIVRODISTRIBUIDORA">
+    <Key>
+      <PropertyRef Name="IDLIVRO" />
+      <PropertyRef Name="IDDISTRIBUIDORA" />
+    </Key>
+    <Property Name="IDLIVRO" Type="int" Nullable="false" />
+    <Property Name="IDDISTRIBUIDORA" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LIVROS">
+    <Key>
+      <PropertyRef Name="IDLIVRO" />
+    </Key>
+    <Property Name="IDLIVRO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EAN13" Type="varchar" MaxLength="13" Nullable="false" />
+    <Property Name="ISBN" Type="varchar" MaxLength="13" Nullable="false" />
+    <Property Name="TITULO" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="AUTOR" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="EDICAO" Type="tinyint" />
+    <Property Name="ANOEDICAO" Type="varchar" MaxLength="4" />
+    <Property Name="FORMATO" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="NUMEROPAGINAS" Type="smallint" Nullable="false" />
+    <Property Name="ORIGEM" Type="varchar" MaxLength="150" />
+    <Property Name="PRECO" Type="smallmoney" Nullable="false" />
+    <Property Name="IDMOVIMENTACAO" Type="int" Nullable="false" />
+    <Property Name="IDEDITORA" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MOVIMENTACAO">
+    <Key>
+      <PropertyRef Name="IDMOVIMENTACAO" />
+    </Key>
+    <Property Name="IDMOVIMENTACAO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="QUANTIDADEPRODUTO" Type="smallint" Nullable="false" />
+    <Property Name="OPERACAO" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="DATA" Type="date" Nullable="false" />
+    <Property Name="IDDISTRIBUIDORA" Type="int" Nullable="false" />
+    <Property Name="IDLIVRO" Type="int" Nullable="false" />
+    <Property Name="IDFUNCIONARIO" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_LIVROCATEGORIA_CATEGORIAS">
+    <End Role="CATEGORIAS" Type="Self.CATEGORIAS" Multiplicity="1" />
+    <End Role="LIVROCATEGORIA" Type="Self.LIVROCATEGORIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATEGORIAS">
+        <PropertyRef Name="IDCATEGORIA" />
+      </Principal>
+      <Dependent Role="LIVROCATEGORIA">
+        <PropertyRef Name="IDCATEGORIA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LIVROCATEGORIA_LIVROS">
+    <End Role="LIVROS" Type="Self.LIVROS" Multiplicity="1" />
+    <End Role="LIVROCATEGORIA" Type="Self.LIVROCATEGORIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LIVROS">
+        <PropertyRef Name="IDLIVRO" />
+      </Principal>
+      <Dependent Role="LIVROCATEGORIA">
+        <PropertyRef Name="IDLIVRO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LIVRODISTRIBUIDORA_DISTRIBUIDORAS">
+    <End Role="DISTRIBUIDORAS" Type="Self.DISTRIBUIDORAS" Multiplicity="1" />
+    <End Role="LIVRODISTRIBUIDORA" Type="Self.LIVRODISTRIBUIDORA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DISTRIBUIDORAS">
+        <PropertyRef Name="IDDISTRIBUIDORA" />
+      </Principal>
+      <Dependent Role="LIVRODISTRIBUIDORA">
+        <PropertyRef Name="IDDISTRIBUIDORA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LIVRODISTRIBUIDORA_LIVROS">
+    <End Role="LIVROS" Type="Self.LIVROS" Multiplicity="1" />
+    <End Role="LIVRODISTRIBUIDORA" Type="Self.LIVRODISTRIBUIDORA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LIVROS">
+        <PropertyRef Name="IDLIVRO" />
+      </Principal>
+      <Dependent Role="LIVRODISTRIBUIDORA">
+        <PropertyRef Name="IDLIVRO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LIVROS_EDITORAS">
+    <End Role="EDITORAS" Type="Self.EDITORAS" Multiplicity="1" />
+    <End Role="LIVROS" Type="Self.LIVROS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EDITORAS">
+        <PropertyRef Name="IDEDITORA" />
+      </Principal>
+      <Dependent Role="LIVROS">
+        <PropertyRef Name="IDEDITORA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MOVIMENTACAO_DISTRIBUIDORAS">
+    <End Role="DISTRIBUIDORAS" Type="Self.DISTRIBUIDORAS" Multiplicity="1" />
+    <End Role="MOVIMENTACAO" Type="Self.MOVIMENTACAO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DISTRIBUIDORAS">
+        <PropertyRef Name="IDDISTRIBUIDORA" />
+      </Principal>
+      <Dependent Role="MOVIMENTACAO">
+        <PropertyRef Name="IDDISTRIBUIDORA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MOVIMENTACAO_FUNCIONARIOS">
+    <End Role="FUNCIONARIOS" Type="Self.FUNCIONARIOS" Multiplicity="1" />
+    <End Role="MOVIMENTACAO" Type="Self.MOVIMENTACAO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FUNCIONARIOS">
+        <PropertyRef Name="IDFUNCIONARIOS" />
+      </Principal>
+      <Dependent Role="MOVIMENTACAO">
+        <PropertyRef Name="IDFUNCIONARIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MOVIMENTACAO_LIVROS">
+    <End Role="LIVROS" Type="Self.LIVROS" Multiplicity="1" />
+    <End Role="MOVIMENTACAO" Type="Self.MOVIMENTACAO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LIVROS">
+        <PropertyRef Name="IDLIVRO" />
+      </Principal>
+      <Dependent Role="MOVIMENTACAO">
+        <PropertyRef Name="IDLIVRO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BDLIVRARIAModelStoreContainer">
+    <EntitySet Name="CATEGORIAS" EntityType="Self.CATEGORIAS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DISTRIBUIDORAS" EntityType="Self.DISTRIBUIDORAS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EDITORAS" EntityType="Self.EDITORAS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FUNCIONARIOS" EntityType="Self.FUNCIONARIOS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LIVROCATEGORIA" EntityType="Self.LIVROCATEGORIA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LIVRODISTRIBUIDORA" EntityType="Self.LIVRODISTRIBUIDORA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LIVROS" EntityType="Self.LIVROS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MOVIMENTACAO" EntityType="Self.MOVIMENTACAO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_LIVROCATEGORIA_CATEGORIAS" Association="Self.FK_LIVROCATEGORIA_CATEGORIAS">
+      <End Role="CATEGORIAS" EntitySet="CATEGORIAS" />
+      <End Role="LIVROCATEGORIA" EntitySet="LIVROCATEGORIA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LIVROCATEGORIA_LIVROS" Association="Self.FK_LIVROCATEGORIA_LIVROS">
+      <End Role="LIVROS" EntitySet="LIVROS" />
+      <End Role="LIVROCATEGORIA" EntitySet="LIVROCATEGORIA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LIVRODISTRIBUIDORA_DISTRIBUIDORAS" Association="Self.FK_LIVRODISTRIBUIDORA_DISTRIBUIDORAS">
+      <End Role="DISTRIBUIDORAS" EntitySet="DISTRIBUIDORAS" />
+      <End Role="LIVRODISTRIBUIDORA" EntitySet="LIVRODISTRIBUIDORA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LIVRODISTRIBUIDORA_LIVROS" Association="Self.FK_LIVRODISTRIBUIDORA_LIVROS">
+      <End Role="LIVROS" EntitySet="LIVROS" />
+      <End Role="LIVRODISTRIBUIDORA" EntitySet="LIVRODISTRIBUIDORA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LIVROS_EDITORAS" Association="Self.FK_LIVROS_EDITORAS">
+      <End Role="EDITORAS" EntitySet="EDITORAS" />
+      <End Role="LIVROS" EntitySet="LIVROS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MOVIMENTACAO_DISTRIBUIDORAS" Association="Self.FK_MOVIMENTACAO_DISTRIBUIDORAS">
+      <End Role="DISTRIBUIDORAS" EntitySet="DISTRIBUIDORAS" />
+      <End Role="MOVIMENTACAO" EntitySet="MOVIMENTACAO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MOVIMENTACAO_FUNCIONARIOS" Association="Self.FK_MOVIMENTACAO_FUNCIONARIOS">
+      <End Role="FUNCIONARIOS" EntitySet="FUNCIONARIOS" />
+      <End Role="MOVIMENTACAO" EntitySet="MOVIMENTACAO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MOVIMENTACAO_LIVROS" Association="Self.FK_MOVIMENTACAO_LIVROS">
+      <End Role="LIVROS" EntitySet="LIVROS" />
+      <End Role="MOVIMENTACAO" EntitySet="MOVIMENTACAO" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

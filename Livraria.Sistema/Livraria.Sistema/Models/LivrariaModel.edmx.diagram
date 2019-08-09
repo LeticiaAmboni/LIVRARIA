@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1f094ec5859d476b8d8b0b5fd133d057" Name="Diagram1">
+        <EntityTypeShape EntityType="BDLIVRARIAModel.CATEGORIAS" Width="1.5" PointX="0.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDLIVRARIAModel.DISTRIBUIDORAS" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDLIVRARIAModel.EDITORAS" Width="1.5" PointX="0.75" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDLIVRARIAModel.FUNCIONARIOS" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDLIVRARIAModel.LIVROS" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDLIVRARIAModel.MOVIMENTACAO" Width="1.5" PointX="5.25" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDLIVRARIAModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="2.125" IsExpanded="true" />
+        <AssociationConnector Association="BDLIVRARIAModel.FK_MOVIMENTACAO_DISTRIBUIDORAS" ManuallyRouted="false" />
+        <AssociationConnector Association="BDLIVRARIAModel.FK_LIVROS_EDITORAS" ManuallyRouted="false" />
+        <AssociationConnector Association="BDLIVRARIAModel.FK_MOVIMENTACAO_FUNCIONARIOS" ManuallyRouted="false" />
+        <AssociationConnector Association="BDLIVRARIAModel.FK_MOVIMENTACAO_LIVROS" ManuallyRouted="false" />
+        <AssociationConnector Association="BDLIVRARIAModel.LIVROCATEGORIA" ManuallyRouted="false" />
+        <AssociationConnector Association="BDLIVRARIAModel.LIVRODISTRIBUIDORA" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

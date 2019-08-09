@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BDLIVRARIAModelStoreContainer" CdmEntityContainer="BDLIVRARIAEntities">
+    <EntitySetMapping Name="CATEGORIAS">
+      <EntityTypeMapping TypeName="BDLIVRARIAModel.CATEGORIAS">
+        <MappingFragment StoreEntitySet="CATEGORIAS">
+          <ScalarProperty Name="IDCATEGORIA" ColumnName="IDCATEGORIA" />
+          <ScalarProperty Name="NOME" ColumnName="NOME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DISTRIBUIDORAS">
+      <EntityTypeMapping TypeName="BDLIVRARIAModel.DISTRIBUIDORAS">
+        <MappingFragment StoreEntitySet="DISTRIBUIDORAS">
+          <ScalarProperty Name="IDDISTRIBUIDORA" ColumnName="IDDISTRIBUIDORA" />
+          <ScalarProperty Name="CNPJ" ColumnName="CNPJ" />
+          <ScalarProperty Name="NOMEFANTASIA" ColumnName="NOMEFANTASIA" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="TELEFONE" ColumnName="TELEFONE" />
+          <ScalarProperty Name="CIDADE" ColumnName="CIDADE" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EDITORAS">
+      <EntityTypeMapping TypeName="BDLIVRARIAModel.EDITORAS">
+        <MappingFragment StoreEntitySet="EDITORAS">
+          <ScalarProperty Name="IDEDITORA" ColumnName="IDEDITORA" />
+          <ScalarProperty Name="CNPJ" ColumnName="CNPJ" />
+          <ScalarProperty Name="NOMEFANTASIA" ColumnName="NOMEFANTASIA" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="TELEFONE" ColumnName="TELEFONE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FUNCIONARIOS">
+      <EntityTypeMapping TypeName="BDLIVRARIAModel.FUNCIONARIOS">
+        <MappingFragment StoreEntitySet="FUNCIONARIOS">
+          <ScalarProperty Name="IDFUNCIONARIOS" ColumnName="IDFUNCIONARIOS" />
+          <ScalarProperty Name="NOME" ColumnName="NOME" />
+          <ScalarProperty Name="CELULAR" ColumnName="CELULAR" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="SENHA" ColumnName="SENHA" />
+          <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LIVROS">
+      <EntityTypeMapping TypeName="BDLIVRARIAModel.LIVROS">
+        <MappingFragment StoreEntitySet="LIVROS">
+          <ScalarProperty Name="IDLIVRO" ColumnName="IDLIVRO" />
+          <ScalarProperty Name="EAN13" ColumnName="EAN13" />
+          <ScalarProperty Name="ISBN" ColumnName="ISBN" />
+          <ScalarProperty Name="TITULO" ColumnName="TITULO" />
+          <ScalarProperty Name="AUTOR" ColumnName="AUTOR" />
+          <ScalarProperty Name="EDICAO" ColumnName="EDICAO" />
+          <ScalarProperty Name="ANOEDICAO" ColumnName="ANOEDICAO" />
+          <ScalarProperty Name="FORMATO" ColumnName="FORMATO" />
+          <ScalarProperty Name="NUMEROPAGINAS" ColumnName="NUMEROPAGINAS" />
+          <ScalarProperty Name="ORIGEM" ColumnName="ORIGEM" />
+          <ScalarProperty Name="PRECO" ColumnName="PRECO" />
+          <ScalarProperty Name="IDMOVIMENTACAO" ColumnName="IDMOVIMENTACAO" />
+          <ScalarProperty Name="IDEDITORA" ColumnName="IDEDITORA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MOVIMENTACAO">
+      <EntityTypeMapping TypeName="BDLIVRARIAModel.MOVIMENTACAO">
+        <MappingFragment StoreEntitySet="MOVIMENTACAO">
+          <ScalarProperty Name="IDMOVIMENTACAO" ColumnName="IDMOVIMENTACAO" />
+          <ScalarProperty Name="QUANTIDADEPRODUTO" ColumnName="QUANTIDADEPRODUTO" />
+          <ScalarProperty Name="OPERACAO" ColumnName="OPERACAO" />
+          <ScalarProperty Name="DATA" ColumnName="DATA" />
+          <ScalarProperty Name="IDDISTRIBUIDORA" ColumnName="IDDISTRIBUIDORA" />
+          <ScalarProperty Name="IDLIVRO" ColumnName="IDLIVRO" />
+          <ScalarProperty Name="IDFUNCIONARIO" ColumnName="IDFUNCIONARIO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="BDLIVRARIAModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="LIVROCATEGORIA" TypeName="BDLIVRARIAModel.LIVROCATEGORIA" StoreEntitySet="LIVROCATEGORIA">
+      <EndProperty Name="CATEGORIAS">
+        <ScalarProperty Name="IDCATEGORIA" ColumnName="IDCATEGORIA" />
+      </EndProperty>
+      <EndProperty Name="LIVROS">
+        <ScalarProperty Name="IDLIVRO" ColumnName="IDLIVRO" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="LIVRODISTRIBUIDORA" TypeName="BDLIVRARIAModel.LIVRODISTRIBUIDORA" StoreEntitySet="LIVRODISTRIBUIDORA">
+      <EndProperty Name="DISTRIBUIDORAS">
+        <ScalarProperty Name="IDDISTRIBUIDORA" ColumnName="IDDISTRIBUIDORA" />
+      </EndProperty>
+      <EndProperty Name="LIVROS">
+        <ScalarProperty Name="IDLIVRO" ColumnName="IDLIVRO" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>
